@@ -1,0 +1,587 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box; 
+  background-color:;
+/* Garante que paddings não quebrem as larguras */
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #f5f5f4;
+}
+
+
+/* Logo com cor dourada vibrante para destacar no fundo escuro */
+.logo{
+  color: #facc15;
+  font-size: 1.6em;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+#container-geral{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+}
+
+ul{
+  list-style-type: none;
+  text-decoration: none;
+}
+
+/* Header escuro premium alinhado com a identidade visual do app */
+header{
+  background: #1c1917;
+  padding: 16px 30px;
+  width: 100%;
+  border-bottom: 1px solid #292524;
+}
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Ativado a exibição dos links superiores de forma limpa e elegante */
+#nav-links{
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Estilo minimalista para os itens do menu superior */
+#nav-links li {
+  color: #a8a29e;
+  font-weight: 600;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+#nav-links li:hover {
+  color: #facc15;
+}
+
+/* O conteúdo principal faz scroll livremente */
+main{
+border:none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  min-height: 100vh;
+}
+
+/* Container que agrupa os ícones de ação e o botão mobile no canto direito */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* Espaçamento ideal entre os ícones */
+}
+
+/* Estilo minimalista e limpo para os botões de ícone do topo */
+.header-icon-button {
+  background: none;
+  border: none;
+  color: #a8a29e; /* Cor cinzenta neutra idêntica aos links superiores */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: color 0.2s ease, transform 0.1s ease;
+}
+
+/* Efeito luminoso e interativo ao passar o rato por cima dos ícones */
+.header-icon-button:hover {
+  color: #facc15; /* Muda para o dourado característico da marca */
+  transform: scale(1.05); /* Pequeno efeito de zoom muito suave */
+}
+
+/* Garante que o botão mobile padrão mantenha o alinhamento perfeito na flexbox */
+#mobile {
+  color: #f5f5f4;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+
+/* Ícone mobile com cor clara para contraste */
+#mobile{
+  padding: 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #f5f5f4;
+  display: flex;
+  align-items: center;
+}
+
+#nav-linksMobile{
+  padding: 8px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 32px;
+  color: #fafaf9;
+}
+
+li{
+  font-size: 1em;
+}
+
+.active{
+  width: 100%;
+  background: #facc15;
+  padding: 8px;
+  color: white;
+  font-weight: bold;
+  border-radius: 40px;
+  border-bottom: 2px dotted #facc15;
+}
+
+/* Aba ativa do menu lateral redesenhada para visual moderno */
+.active2{
+  background: #facc15;
+  padding: 10px 16px;
+  color: #1c1917 !important; 
+  font-weight: 700;
+  border-radius: 8px;
+  width: 100%;
+}
+
+#active2{
+  background: #fcd34d;
+  padding: 8px;
+  color: #44403c;
+  font-weight: bold;
+  border-radius: 10px;
+  border-left: 2px dotted #facc15;
+}
+
+/* Botão de Login polido com transição de cor no hover */
+.button{
+  padding: 8px 20px;
+  background: #fcd34d;
+  color: #171717;
+  font-weight: bold;
+  font-size: 0.9em;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover{
+  background: #facc15;
+}
+
+/* Campo de Pesquisa com visual moderno e animação de foco */
+.search-container{
+outline: none;
+  transition: border-color 0.2s ease;
+}
+.input-container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+   width: 100%;
+  padding: 4px 16px;
+  background: #292524;
+  color: white;
+  font-size: 0.9em;
+  border-radius: 50px;
+  border: 1px solid #36322f;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+#seach{
+  width: 100%;
+  background: #292524;
+  color: white;
+  height:100%;
+  font-size: 0.9em;
+  border-radius: 50px;
+  border:none;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.search-container:focus{
+  border-color: #facc15;
+}
+
+/* Selects limpos, sem pontilhados artificiais e confortáveis para clique */
+select{
+  background: #292524;
+  color: white;
+  border: 1px solid #44403c;
+  border-radius: 50px;
+  padding: 8px 16px;
+  font-size: 0.9em;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+select:focus{
+  border-color: #facc15;
+}
+
+/* Ajuste no espaçamento e alinhamento do bloco de busca */
+.search-container{
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.filters{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.container{
+  padding: 14px 30px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1c1917; 
+  border-bottom: 2px solid #292524;
+}
+
+#hero{
+  position:relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+  background: #1c1917;
+}
+
+iframe{
+  position:relative;
+  z-index: 1;
+  border:none;
+  /*border:1px solid #f5f5f4;*/
+  width: 100%;
+  height: 380px;
+}
+
+.hero-content{
+  position:absolute;
+  z-index: 3;
+  width: 100%;
+  height: 380px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 32px;
+  background-position: center; 
+  background-size: cover;
+}
+
+.hero-metrics{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.hero-list{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  color: #f5f5f4; 
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+  font-weight: bold;
+}
+
+.hero-textual{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 6px;
+  max-width: 800px;
+}
+
+.hero-title{
+  font-size: 2.2em;
+  color: #ffffff;
+  font-weight: 900;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+.hero-desc{
+  font-size: 1em;
+  color: #d6d3d1;
+  line-height: 1.5;
+}
+
+.hero-footer-container{
+  width: 100%;
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.hero-button{
+  padding: 14px 28px;
+  background: #facc15;
+  color: #0c0a09;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Barra lateral fixa polida com espaçamento interno confortável */
+.filter{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  width: 254px;
+  height: 100vh;         
+  position: sticky;       
+  top: 0;                 
+  background: #1c1917; 
+  padding: 32px 24px;
+  border-right: 1px solid #292524;
+}
+
+.hero-aside{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 12px;
+}
+
+.hero-aside-items{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 4px;
+}
+
+/* Estilização dos links laterais com efeitos hover suaves */
+.hero-aside-items li{
+  width: 100%;
+  font-size: 0.95em;
+  font-weight: 600;
+  color: #a8a29e; 
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hero-aside-items li:hover:not(.active2){
+  color: #ffffff;
+  background: #292524;
+  border-radius: 8px;
+}
+
+/* Rodapé da barra lateral minimalista com separador delicado */
+.hero-footer {
+  width: 100%;
+  padding-top: 16px;
+  border-top: 1px solid #292524;
+}
+
+.hero-footer li {
+  color: #57534e !important;
+  font-size: 0.85em;
+  padding-left: 16px;
+}
+
+/* MODIFICADO: Estilização refinada para a área da seção inferior de filmes */
+#container2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+}
+
+#movie-list-section{
+  padding: 36px 30px;
+  width: 100%;
+  background: #f5f5f4;
+}
+
+#movie-list-section h3{
+  color: #1c1917;
+  font-size: 1.6em;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.container-head{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.container-cat{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+
+/* MODIFICADO: Botões de categoria modernos com transição no hover */
+.cat-button{
+  border: 1px solid #e7e5e4;
+  border-radius: 20px;
+  color: #6b7280;
+  font-size: 0.9em;
+  font-weight: 600;
+  padding: 8px 22px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cat-button:hover{
+  border-color: #facc15;
+  color: #1c1917;
+}
+
+/* MODIFICADO: Estilo para quando uma categoria está ativa na lista inferior */
+.cat-button.active2{
+  background: #facc15;
+  border-color: #facc15;
+  color: #1c1917;
+}
+
+/* Grelha inteligente para renderizar os cards automaticamente */
+#movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+/* MODIFICADO: Card com animação suave de elevação (Hover) */
+.movie-card{
+  width: 100%; 
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.img-container{ 
+  width: 100%;
+  height: 160px;
+  background-image: url('https://www.nme.com/wp-content/uploads/2025/03/Despicable-Me-4-new.jpg');
+  background-position: center; 
+  background-size: cover;
+  position: relative;
+}
+
+.second-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.second-options{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 0.75em;
+  font-weight: bold;
+  color: #292524;
+}
+
+.top-buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #ef4444;
+  cursor: pointer;
+  filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.5));
+}
+
+.card-title{
+  font-size: 1.05em;
+  color: #292524;
+  padding: 12px 12px 4px 12px;
+  font-weight: 700;
+}
+
+.text-container p{
+  font-size: 0.8em;
+  color: #78716c;
+  padding: 0 12px 12px 12px;
+  line-height: 1.4;
+}
+
+.footer-card{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px 14px 12px;
+  color: #44403c;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+/* Botão do carrinho compacto e sem bordas com hover */
+.card-button{
+  border: none;
+  border-radius: 50px;
+  color: #292524;
+  padding: 6px 12px;
+  background: #facc15;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.card-button:hover{
+  background: #eab308;
+}
+
