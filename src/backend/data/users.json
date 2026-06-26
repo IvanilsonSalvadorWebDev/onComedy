@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "name": "ivan",
+    "email": "ivan@gmail.com",
+    "image": "https://www.cm-benavente.pt/wp-content/uploads/2024/07/19JUL-gru4_SITE.jpg",
+    "password": "1234",
+    "type": "Cliente",
+    "active": false
+  }
+]
+

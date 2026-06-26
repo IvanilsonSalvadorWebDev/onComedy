@@ -10,7 +10,12 @@ return `<div class='search-container'>
                 
         </div> 
         
-        <button class='button'>Login</button>
+        <button id='mobile-button' class=''><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24"  
+                fill="currentColor" viewBox="0 0 24 24" >
+                <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                <path d="M3 4h18v2H3zm0 7h18v2H3zm0 7h18v2H3z"></path>
+                </svg>
+        </button>
     </div>
 </div>`
 }

@@ -5,9 +5,45 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>oncomedy</title>
+        <script src ="https://www.youtube.com/iframe_api"></script>
   </head>
   <body>
+  
     <div id="app"></div>
+    
+<script>
+    
+    let player;
+
+    const container = document.getElementById('movies-grid');
+
+    
+      function onYouTubeIframeAPIReady(iframe) {
+      
+        player = new YT.Player('player', {
+      
+          events: {
+            'onReady': onPlayerReady,
+          }
+        });
+    }
+
+        // 3. API chama esta função quando o player está pronto
+        function onPlayerReady(event) {
+            // event.target.playVideo(); // Descomente para dar play automático
+        }
+
+        function pausarVideo() {
+            if (player) player.pauseVideo();
+        }
+
+        function tocarVideo() {
+            if (player) player.playVideo();
+        }
+
+        
+</script>
     <script type="module" src="/src/main.js"></script>
+
   </body>
 </html>

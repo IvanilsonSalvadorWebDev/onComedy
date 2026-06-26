@@ -3,7 +3,11 @@ export function Header(){
 return `<header>
     <nav>
         <ul>
-            <li class='logo'>onComedy</li>
+          <li class="logo-container">
+            <a href="">
+              <img src="/onComedy.svg" alt="onComedy Logo" class="logo-img">
+            </a>
+          </li>
         </ul>
 
         <!-- Links padrão do Desktop -->

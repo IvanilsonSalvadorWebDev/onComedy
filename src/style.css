@@ -1,30 +1,106 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght=0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-*{
+/* ==========================================================================
+   VARIÁVEIS GLOBAIS (Estilo Cinematográfico Dark - Inspirado em Netflix)
+   ========================================================================== */
+:root {
+  /* Tons de Destaque / Premium (Vermelho Vibrante Netflix) */
+  /* Tons de Destaque / Premium (Lilás Cyber / Neon) */
+  --modern-red: #a855f7;             /* Lilás vibrante e moderno */
+  --modern-red-hover: #9333ea;       /* Lilás mais denso para estados de hover */
+  --modern-red-light: #c084fc;       /* Tom de lilás sutil para elementos secundários */
+  --modern-red-alpha: rgba(168, 85, 247, 0.6);
+
+  /* Tons de Texto (Totalmente Neutros) */
+  --text-dark: #141414;              /* Preto Netflix */
+  --text-muted: #808080;             /* Cinza médio limpo */
+  --text-light: #ffffff;             /* Branco puro */
+  --text-body: #a3a3a3;              /* Cinza claro suave para parágrafos */
+  --text-nav: #e5e5e5;               /* Links de navegação esbranquiçados */
+  --text-desc: #e5e7eb;              /* Descrição do Hero (Contraste limpo sobre o grafite) */
+  --text-btn-dark: #ffffff;          /* Texto branco dentro do botão vermelho */
+  --text-btn-nav: #ffffff;
+  --text-caption: #808080;
+  --text-aside: #f5f5f7;
+  --text-footer: #737373;
+  --text-cat-btn: #ffffff;
+
+  /* Cores de Fundo (True Black e Dark Charcoal) */
+  --bg-main: #141414;                /* Fundo escuro absoluto padrão Netflix */
+  --bg-dark-solid: #181818;          /* Container ou cabeçalho ligeiramente elevado */
+  --bg-dark-element: #2f2f2f;        /* Inputs e blocos internos */
+  --bg-card: #1f1f1f;                /* Card cinza escuro para destacar no fundo preto */
+  --bg-badge-alpha: rgba(255, 255, 255, 0.08); /* Badge sutil claro no fundo escuro */
+
+  /* Bordas Cirúrgicas e Neutras */
+  --border-dark: #262626;
+  --border-input: #404040;           /* Linha cinza média elegante */
+  --border-select: #404040;
+  --border-light: #333333;           /* Divisória super clean no modo escuro */
+
+  /* Alertas */
+  --color-danger: #ef4444;           /* Vermelho vivo neutro */
+}
+
+/* ==========================================================================
+   RESET GLOBAL E BASE
+   ========================================================================== */
+* {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box; 
-  background-color:;
-/* Garante que paddings não quebrem as larguras */
 }
 
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
-  background-color: #f5f5f4;
+  background-color: var(--bg-main);
+  color: var(--text-light);
 }
 
-
-/* Logo com cor dourada vibrante para destacar no fundo escuro */
-.logo{
-  color: #facc15;
-  font-size: 1.6em;
-  font-weight: 900;
-  letter-spacing: -0.5px;
+ul {
+  list-style-type: none;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
 }
 
-#container-geral{
+li {
+  font-size: 1em;
+}
+
+/* ==========================================================================
+   CSS DO LOGOTIPO (ESTRUTURA DA IMAGEM)
+   ========================================================================== */
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-container a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 48px; 
+  width: auto;  
+  display: block;
+  object-fit: contain;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo-img:hover {
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   ESTRUTURA DA INTERFACE (HEADER & LAYOUT)
+   ========================================================================== */
+#container-geral {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -32,35 +108,27 @@ body {
   align-items: start;
 }
 
-ul{
-  list-style-type: none;
-  text-decoration: none;
-}
-
-/* Header escuro premium alinhado com a identidade visual do app */
-header{
-  background: #1c1917;
+header {
+  background: var(--bg-dark-solid);
   padding: 16px 30px;
   width: 100%;
-  border-bottom: 1px solid #292524;
+  border-bottom: 1px solid var(--border-dark);
 }
 
-nav{
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* Ativado a exibição dos links superiores de forma limpa e elegante */
-#nav-links{
+#nav-links {
   display: flex;
   align-items: center;
   gap: 24px;
 }
 
-/* Estilo minimalista para os itens do menu superior */
 #nav-links li {
-  color: #a8a29e;
+  color: var(--text-nav);
   font-weight: 600;
   font-size: 0.95em;
   cursor: pointer;
@@ -68,12 +136,11 @@ nav{
 }
 
 #nav-links li:hover {
-  color: #facc15;
+  color: var(--modern-red);
 }
 
-/* O conteúdo principal faz scroll livremente */
-main{
-border:none;
+main {
+  border: none;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -82,166 +149,107 @@ border:none;
   min-height: 100vh;
 }
 
-/* Container que agrupa os ícones de ação e o botão mobile no canto direito */
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 16px; /* Espaçamento ideal entre os ícones */
+  gap: 16px;
 }
 
-/* Estilo minimalista e limpo para os botões de ícone do topo */
 .header-icon-button {
   background: none;
   border: none;
-  color: #a8a29e; /* Cor cinzenta neutra idêntica aos links superiores */
+  color: var(--text-nav);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 4px;
-  transition: color 0.2s ease, transform 0.1s ease;
 }
 
-/* Efeito luminoso e interativo ao passar o rato por cima dos ícones */
 .header-icon-button:hover {
-  color: #facc15; /* Muda para o dourado característico da marca */
-  transform: scale(1.05); /* Pequeno efeito de zoom muito suave */
+  color: var(--modern-red);
 }
 
-/* Garante que o botão mobile padrão mantenha o alinhamento perfeito na flexbox */
 #mobile {
-  color: #f5f5f4;
+  color: var(--text-light); /* Corrigido: Agora o ícone possui cor visível no escuro */
   display: flex;
   align-items: center;
   padding: 4px;
-}
-
-/* Ícone mobile com cor clara para contraste */
-#mobile{
-  padding: 2px;
   background: none;
   border: none;
   cursor: pointer;
-  color: #f5f5f4;
-  display: flex;
-  align-items: center;
 }
 
-#nav-linksMobile{
+#nav-linksMobile {
   padding: 8px;
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 32px;
-  color: #fafaf9;
+  color: #fafaf9; 
 }
 
-li{
-  font-size: 1em;
-}
-
-.active{
+/* ==========================================================================
+   ELEMENTOS ATIVOS E BOTÕES
+   ========================================================================== */
+.active {
   width: 100%;
-  background: #facc15;
-  padding: 8px;
-  color: white;
+  background: var(--modern-red);
+  padding: 8px 16px;
+  color: var(--text-light);
   font-weight: bold;
-  border-radius: 40px;
-  border-bottom: 2px dotted #facc15;
+  border-radius: 4px;
 }
 
-/* Aba ativa do menu lateral redesenhada para visual moderno */
-.active2{
-  background: #facc15;
+.active2 {
+  background: var(--modern-red);
   padding: 10px 16px;
-  color: #1c1917 !important; 
+  color: var(--text-btn-nav) !important; 
   font-weight: 700;
-  border-radius: 8px;
+  border-radius: 4px;
   width: 100%;
 }
 
-#active2{
-  background: #fcd34d;
-  padding: 8px;
-  color: #44403c;
+#active2 {
+  background: var(--bg-dark-element);
+  padding: 8px 16px;
+  color: var(--text-light);
   font-weight: bold;
-  border-radius: 10px;
-  border-left: 2px dotted #facc15;
+  border-radius: 4px;
+  border-left: 3px solid var(--modern-red);
 }
 
-/* Botão de Login polido com transição de cor no hover */
-.button{
+.button {
   padding: 8px 20px;
-  background: #fcd34d;
-  color: #171717;
+  background: var(--modern-red);
+  color: white; 
   font-weight: bold;
   font-size: 0.9em;
-  border-radius: 50px;
+  border-radius: 4px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s;
 }
 
-.button:hover{
-  background: #facc15;
+.button:hover {
+  background: var(--modern-red-hover);
 }
 
-/* Campo de Pesquisa com visual moderno e animação de foco */
-.search-container{
-outline: none;
-  transition: border-color 0.2s ease;
-}
-.input-container{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-   width: 100%;
-  padding: 4px 16px;
-  background: #292524;
-  color: white;
+#mobile-button {
+  padding: 8px 16px; 
+  background: var(--bg-dark-solid);
+  color: var(--text-light); 
+  font-weight: bold;
   font-size: 0.9em;
-  border-radius: 50px;
-  border: 1px solid #36322f;
-  outline: none;
-  transition: border-color 0.2s ease;
-}
-
-#seach{
-  width: 100%;
-  background: #292524;
-  color: white;
-  height:100%;
-  font-size: 0.9em;
-  border-radius: 50px;
-  border:none;
-  outline: none;
-  transition: border-color 0.2s ease;
-}
-
-.search-container:focus{
-  border-color: #facc15;
-}
-
-/* Selects limpos, sem pontilhados artificiais e confortáveis para clique */
-select{
-  background: #292524;
-  color: white;
-  border: 1px solid #44403c;
-  border-radius: 50px;
-  padding: 8px 16px;
-  font-size: 0.9em;
+  border-radius: 4px;
+  border: none;
   cursor: pointer;
-  outline: none;
-  transition: border-color 0.2s ease;
 }
 
-select:focus{
-  border-color: #facc15;
-}
-
-/* Ajuste no espaçamento e alinhamento do bloco de busca */
-.search-container{
+/* ==========================================================================
+   INPUTS, SELETORES E FILTROS
+   ========================================================================== */
+.search-container {
   width: auto;
   display: flex;
   justify-content: space-between;
@@ -249,116 +257,183 @@ select:focus{
   gap: 8px;
 }
 
-.filters{
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 6px 16px;
+  background: var(--bg-dark-element);
+  color: var(--text-light);
+  font-size: 0.9em;
+  border-radius: 4px;
+  border: 1px solid var(--border-input);
+}
+
+.input-container:focus-within {
+  border-color: var(--modern-red);
+}
+
+#seach {
+  width: 100%;
+  background: transparent;
+  color: var(--text-light);
+  font-size: 0.9em;
+  border: none;
+  outline: none;
+}
+
+.select-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+select {
+  background: var(--bg-dark-element);
+  color: var(--text-light);
+  border: 1px solid var(--border-select);
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 0.9em;
+  cursor: pointer;
+  outline: none;
+}
+
+select:focus {
+  border-color: var(--modern-red);
+}
+
+.filters {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
 }
 
-.container{
+.container {
   padding: 14px 30px; 
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #1c1917; 
-  border-bottom: 2px solid #292524;
+  background: var(--bg-dark-solid); 
+  border-bottom: 2px solid var(--border-dark);
 }
 
-#hero{
-  position:relative;
+/* ==========================================================================
+   SEÇÃO HERO (BANNER PRINCIPAL)
+   ========================================================================== */
+#hero {
+  position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column; 
   justify-content: space-between;
-  align-items: start;
+  align-items: center;
   width: 100%;
-  background: #1c1917;
+  background: var(--bg-main);
+  background-image: linear-gradient(to top, rgba(20, 20, 20, 1) 0%, rgba(20, 20, 20, 0.4) 50%, rgba(20, 20, 20, 0) 100%), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD77Jbm5qaK2d-y09BdDZOJWdtU4xkksvyR3aOtD2-6-hrejo6HZVQdrY&s=10');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
 }
 
-iframe{
-  position:relative;
+.iframe {
+  position: relative;
   z-index: 1;
-  border:none;
-  /*border:1px solid #f5f5f4;*/
+  border: none;
   width: 100%;
-  height: 380px;
+  height: 400px;
 }
 
-.hero-content{
-  position:absolute;
+.hero-content {
+  position: relative; 
   z-index: 3;
   width: 100%;
-  height: 380px; 
+  min-height: 360px; 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 32px;
-  background-position: center; 
-  background-size: cover;
+  justify-content: space-between; 
+  align-items: flex-start; 
+  padding: 36px 36px 10px 32px; 
+  box-sizing: border-box;
 }
 
-.hero-metrics{
+.hero-metrics {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  align-items: center;
+  align-items: flex-start; 
 }
 
-.hero-list{
+.hero-list {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 12px;
-  color: #f5f5f4; 
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+  color: var(--text-light); 
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
   font-weight: bold;
 }
 
-.hero-textual{
+.hero-textual {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  align-items: start;
-  gap: 6px;
-  max-width: 800px;
+  align-items: flex-start; 
+  gap: 12px; 
+  max-width: 600px; 
 }
 
-.hero-title{
-  font-size: 2.2em;
-  color: #ffffff;
+.hero-title {
+  font-size: 2.8em; 
+  color: var(--text-light);
   font-weight: 900;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
 }
 
-.hero-desc{
-  font-size: 1em;
-  color: #d6d3d1;
-  line-height: 1.5;
+.hero-desc {
+  font-size: 1.1em;
+  color: var(--text-desc);
+  line-height: 1.6;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
 }
 
-.hero-footer-container{
+.hero-footer-container {
   width: 100%;
   display: flex;
   flex-direction: row; 
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 24px;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 36px;
+  margin-top: auto; 
+  margin-bottom: 0px; 
 }
 
-.hero-button{
-  padding: 14px 28px;
-  background: #facc15;
-  color: #0c0a09;
+.hero-button {
+  padding: 16px 32px; 
+  background: var(--modern-red);
+  color: var(--text-btn-dark);
   font-weight: bold;
   border: none;
-  border-radius: 50px;
+  border-radius: 4px; 
   cursor: pointer;
   white-space: nowrap;
+  text-transform: uppercase; 
+  letter-spacing: 0.5px;
+  margin-left: auto; 
+  transition: background-color 0.2s ease;
 }
 
-/* Barra lateral fixa polida com espaçamento interno confortável */
-.filter{
+.hero-button:hover {
+  background: var(--modern-red-hover);
+}
+
+/* ==========================================================================
+   SIDEBAR (MENU LATERAL)
+   ========================================================================== */
+.filter {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -367,12 +442,12 @@ iframe{
   height: 100vh;         
   position: sticky;       
   top: 0;                 
-  background: #1c1917; 
+  background: var(--bg-dark-solid); 
   padding: 32px 24px;
-  border-right: 1px solid #292524;
+  border-right: 1px solid var(--border-dark);
 }
 
-.hero-aside{
+.hero-aside {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -381,47 +456,68 @@ iframe{
   gap: 12px;
 }
 
-.hero-aside-items{
+.hero-aside-items {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
   gap: 4px;
+  list-style: none; /* Garante que não apareçam pontos de lista */
+  padding: 0;       /* Remove paddings fantasmas da tag ul */
+  margin: 0;
 }
 
-/* Estilização dos links laterais com efeitos hover suaves */
-.hero-aside-items li{
+/* MODIFICADO: Alinha os ícones e textos lado a lado e centralizados */
+.hero-aside-items li {
   width: 100%;
   font-size: 0.95em;
   font-weight: 600;
-  color: #a8a29e; 
+  color: var(--text-muted); 
   padding: 10px 16px;
   cursor: pointer;
   transition: all 0.2s ease;
+  
+  display: flex;       /* Ativa o flexbox para os filhos diretos (SVG e Texto) */
+  align-items: center; /* Centraliza verticalmente o ícone com o texto */
+  gap: 12px;           /* Cria o espaçamento horizontal exato entre o ícone e o texto */
 }
 
-.hero-aside-items li:hover:not(.active2){
-  color: #ffffff;
-  background: #292524;
-  border-radius: 8px;
+/* Garante que o ícone SVG não quebre ou deforme a largura */
+.hero-aside-items li svg {
+  flex-shrink: 0;
 }
 
-/* Rodapé da barra lateral minimalista com separador delicado */
+.hero-aside-items li:hover:not(.active2) {
+  color: var(--text-light);
+  background: var(--bg-dark-element);
+  border-radius: 4px;
+}
+
+/* Estilo para a classe ativa (caso queira o mesmo fundo ou um destaque) */
+.hero-aside-items li.active2 {
+  color: var(--text-light);
+  background: var--modern-red); /* Remova se não quiser fundo no ativo */
+  border-radius: 4px;
+}
+
 .hero-footer {
   width: 100%;
   padding-top: 16px;
-  border-top: 1px solid #292524;
+  border-top: 1px solid var(--border-dark);
 }
 
 .hero-footer li {
-  color: #57534e !important;
+  color: var(--text-footer) !important;
   font-size: 0.85em;
   padding-left: 16px;
 }
 
-/* MODIFICADO: Estilização refinada para a área da seção inferior de filmes */
-#container2{
+
+/* ==========================================================================
+   LISTAGEM DOS CARDS DE FILMES
+   ========================================================================== */
+#container2 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -429,20 +525,20 @@ iframe{
   width: 100%;
 }
 
-#movie-list-section{
+#movie-list-section {
   padding: 36px 30px;
   width: 100%;
-  background: #f5f5f4;
+  background: var(--bg-main);
 }
 
-#movie-list-section h3{
-  color: #1c1917;
+#movie-list-section h3 {
+  color: var(--text-light);
   font-size: 1.6em;
   font-weight: 800;
   letter-spacing: -0.3px;
 }
 
-.container-head{
+.container-head {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -451,7 +547,7 @@ iframe{
   margin-bottom: 28px;
 }
 
-.container-cat{
+.container-cat {
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -459,32 +555,29 @@ iframe{
   gap: 10px;
 }
 
-/* MODIFICADO: Botões de categoria modernos com transição no hover */
-.cat-button{
-  border: 1px solid #e7e5e4;
-  border-radius: 20px;
-  color: #6b7280;
+.cat-button {
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  color: var(--text-nav);
   font-size: 0.9em;
   font-weight: 600;
   padding: 8px 22px;
-  background: #ffffff;
+  background: var(--bg-card);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.cat-button:hover{
-  border-color: #facc15;
-  color: #1c1917;
+.cat-button:hover {
+  border-color: var(--modern-red);
+  color: var(--text-light);
 }
 
-/* MODIFICADO: Estilo para quando uma categoria está ativa na lista inferior */
-.cat-button.active2{
-  background: #facc15;
-  border-color: #facc15;
-  color: #1c1917;
+.cat-button.active2 {
+  background: var(--modern-red);
+  border-color: var(--modern-red);
+  color: var(--text-light);
 }
 
-/* Grelha inteligente para renderizar os cards automaticamente */
 #movies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -492,27 +585,31 @@ iframe{
   width: 100%;
 }
 
-/* MODIFICADO: Card com animação suave de elevação (Hover) */
-.movie-card{
+.movie-card {
   width: 100%; 
-  background: #ffffff;
-  border-radius: 8px;
+  background: var(--bg-card);
+  border-radius: 4px;
   overflow: hidden;
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease;
 }
 
 .movie-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-.img-container{ 
+.img-container { 
   width: 100%;
   height: 160px;
-  background-image: url('https://www.nme.com/wp-content/uploads/2025/03/Despicable-Me-4-new.jpg');
-  background-position: center; 
-  background-size: cover;
   position: relative;
+  overflow: hidden;
+}
+
+.movie-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .second-container {
@@ -521,59 +618,58 @@ iframe{
   width: 100%;
 }
 
-.second-options{
+.second-options {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 6px 10px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(0,0,0,0.7);
   font-size: 0.75em;
   font-weight: bold;
-  color: #292524;
+  color: var(--text-light);
 }
 
 .top-buttons {
   position: absolute;
   top: 10px;
   right: 10px;
-  color: #ef4444;
+  color: var(--color-danger);
   cursor: pointer;
-  filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.5));
+  z-index: 2;
 }
 
-.card-title{
+.card-title {
   font-size: 1.05em;
-  color: #292524;
+  color: var(--text-light);
   padding: 12px 12px 4px 12px;
   font-weight: 700;
 }
 
-.text-container p{
+.text-container p {
   font-size: 0.8em;
-  color: #78716c;
+  color: var(--text-muted);
   padding: 0 12px 12px 12px;
   line-height: 1.4;
 }
 
-.footer-card{
+.footer-card {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 10px 12px 14px 12px;
-  color: #44403c;
+  color: var(--text-nav);
   font-weight: bold;
   font-size: 0.9em;
 }
 
-/* Botão do carrinho compacto e sem bordas com hover */
-.card-button{
+.card-button {
   border: none;
-  border-radius: 50px;
-  color: #292524;
+  border-radius: 4px;
+  color: white;
   padding: 6px 12px;
-  background: #facc15;
+  background: var(--modern-red);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -581,7 +677,341 @@ iframe{
   transition: background-color 0.2s ease;
 }
 
-.card-button:hover{
-  background: #eab308;
+.card-button:hover {
+  background: var(--modern-red-hover);
 }
 
+/* ==========================================================================
+   LOADER & COMPONENTES DE FEEDBACK
+   ========================================================================== */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid #0000;
+  border-right-color: var(--modern-red-alpha);
+  position: relative;
+  animation: l24 1s infinite linear;
+}
+
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: inherit;
+  animation: inherit;
+  animation-duration: 2s;
+}
+
+.loader:after {
+  animation-duration: 4s;
+}
+
+@keyframes l24 {
+  100% {transform: rotate(1turn)}
+}
+
+.error-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.error-glow {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: var(--modern-red);
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.15;
+  top: 20px;
+  pointer-events: none;
+}
+
+.modern-error-svg {
+  width: 80px;
+  height: 80px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: float 4s ease-in-out infinite;
+}
+
+.bg-shape {
+  fill: none;
+  stroke: var(--modern-red);
+  stroke-width: 1.8;
+}
+
+.line-placeholder {
+  stroke: var(--modern-red);
+  stroke-width: 2;
+  opacity: 0.35;
+}
+
+.alert-dot, .alert-line {
+  fill: var(--modern-red);
+  stroke: var(--modern-red);
+  stroke-width: 2;
+}
+
+.error-title {
+  margin: 20px 0 6px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-light);
+  letter-spacing: -0.01em;
+}
+
+.error-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 280px;
+  line-height: 1.5;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ==========================================================================
+   MEDIA QUERIES - RESPONSIVIDADE MOBILE
+   ========================================================================== */
+@media (max-width: 1024px) {
+  #container-geral, #container2 {
+    flex-direction: column;
+  }
+
+  .filter {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-right: none;
+    border-bottom: 1px solid var(--border-dark);
+    padding: 20px 30px;
+  }
+
+  .hero-footer {
+    display: none; 
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-img {
+    height: 28px; 
+  }
+
+  #nav-links {
+    display: none; 
+  }
+
+  #mobile {
+    display: flex; 
+  }
+
+  .container {
+    padding: 14px 20px;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch; 
+  }
+
+  .filters {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-container {
+    width: 100%;
+  }
+
+  .hero-content {
+    padding: 24px 20px 20px 20px;
+    min-height: auto;
+    gap: 20px;
+  }
+
+  .hero-title {
+    font-size: 1.8em; 
+  }
+
+  .hero-desc {
+    font-size: 0.95em;
+  }
+
+  .hero-footer-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .hero-button {
+    width: max-content; /* Corrigido: Impede que o botão ocupe toda a largura horizontal */
+    text-align: center;
+    margin: 0 auto;    /* Centraliza elegantemente na seção mobile */
+    padding: 12px 24px;
+  }
+
+  #movie-list-section {
+    padding: 24px 20px;
+  }
+
+  .container-cat {
+    overflow-x: auto; 
+    width: 100%;
+    padding-bottom: 8px;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cat-button {
+    padding: 6px 16px;
+    font-size: 0.85em;
+    flex-shrink: 0; 
+  }
+
+  #movies-grid, .select-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
+    gap: 16px;
+  }
+
+  .card-title {
+    font-size: 0.95em;
+    padding: 8px 8px 2px 8px;
+  }
+
+  .text-container p {
+    font-size: 0.75em;
+    padding: 0 8px 8px 8px;
+  }
+
+  .footer-card {
+    padding: 8px 8px 10px 8px;
+    font-size: 0.8em;
+  }
+
+  .card-button {
+    padding: 4px 8px;
+  }
+
+  .iframe {
+    height: 220px; 
+  }
+}
+
+/*Skelleton loader */
+/* ==========================================================================
+   SKELETON LOADER (COMPONENTE DE ANIMAÇÃO DE CARREGAMENTO)
+   ========================================================================== */
+
+/* Animação de pulso suave compatível com o tema Dark */
+@keyframes skeleton-pulse {
+  0% {
+    background-color: var(--bg-dark-element);
+    opacity: 0.6;
+  }
+  50% {
+    background-color: #3a3a3a; /* Tom intermediário sutil */
+    opacity: 1;
+  }
+  100% {
+    background-color: var(--bg-dark-element);
+    opacity: 0.6;
+  }
+}
+
+/* Classe base para aplicar o efeito em qualquer elemento individual */
+.skeleton-pulse {
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Card esqueleto estruturado idêntico ao .movie-card original */
+.skeleton-card {
+  width: 100%;
+  background: var(--bg-card);
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-dark);
+}
+
+/* Esqueleto da imagem (.img-container) */
+.skeleton-img {
+  width: 100%;
+  height: 160px;
+}
+
+/* Esqueleto do título (.card-title) */
+.skeleton-title {
+  height: 18px;
+  width: 75%;
+  margin: 16px 12px 8px 12px;
+}
+
+/* Esqueleto das linhas de texto/descrição (.text-container p) */
+.skeleton-text-container {
+  padding: 0 12px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skeleton-line {
+  height: 12px;
+  width: 100%;
+}
+
+.skeleton-line.short {
+  width: 50%;
+}
+
+/* Esqueleto do rodapé do card (.footer-card) */
+.skeleton-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px 14px 12px;
+  border-top: 1px solid var(--border-light);
+}
+
+.skeleton-info {
+  height: 14px;
+  width: 40px;
+}
+
+.skeleton-btn {
+  height: 28px;
+  width: 70px;
+  border-radius: 4px;
+}
+
+/* Adaptabilidade responsiva para os Skeletons em telas menores (Mobile) */
+@media (max-width: 768px) {
+  .skeleton-img {
+    height: 120px; /* Reduz altura da imagem em telas mobile como feito indiretamente */
+  }
+  
+  .skeleton-title {
+    height: 14px;
+    margin: 12px 8px 6px 8px;
+  }
+  
+  .skeleton-text-container {
+    padding: 0 8px 8px 8px;
+  }
+  
+  .skeleton-footer {
+    padding: 8px 8px 10px 8px;
+  }
+}
